@@ -1,0 +1,19 @@
+from bs4 import BeautifulSoup
+import requests
+def news_relevancy(person,url):
+    data = requests.get(url)
+    html = BeautifulSoup(data.text, 'html.parser')
+    textContent = []
+    no_of_p = len(html.find_all("p"))
+    for i in range(0, no_of_p):
+        paragraphs = html.find_all("p")[i].text
+        textContent.append(paragraphs)
+    for i in textContent:
+        if i.find(person)== -1:
+            state = False
+        else:
+            return True
+    return state
+    
+#this code will go to one url and try to verify if the person or city or name is inside that url
+
