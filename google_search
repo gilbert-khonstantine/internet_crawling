@@ -1,0 +1,6 @@
+from googlesearch import search
+query = "(your google search)"
+search_result = []  
+for j in search(query, tld="co.in", num=5, stop=10, pause=2): 
+    search_result = search_result+[j]
+print(search_result)
