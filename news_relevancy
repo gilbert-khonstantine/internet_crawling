@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-def news_relevancy(object,url):
+def news_relevancy(search_object,url):
     data = requests.get(url)
     html = BeautifulSoup(data.text, 'html.parser')
     textContent = []
@@ -9,7 +9,7 @@ def news_relevancy(object,url):
         paragraphs = html.find_all("p")[i].text
         textContent.append(paragraphs)
     for i in textContent:
-        if i.find(object)== -1:
+        if i.find(search_object)== -1:
             state = False
         else:
             return True
